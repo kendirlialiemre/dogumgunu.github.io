@@ -12,12 +12,21 @@
 </head>
 
 <body>
-<audio id="background-music" src="music/videoplayback.weba" loop></audio>
+
+<div id="intro-screen">
+  <div class="intro-content">
+    <h1>Birlikte geçirdiğimiz zamanlara hazır mısın? ✨</h1>
+    <button id="start-button">Başlayalım 💖</button>
+  </div>
+</div>
+
+
+  <audio id="background-music" src="music/videoplayback.mp3" loop></audio>
 
   <!-- Zaman Tüneli Bölümü -->
   <div class="timeline-container">
     <h1 class="main-title">Bizim Zaman Tünelimiz 🕰️</h1>
- 
+
     <div class="timeline">
       <!-- Anı 1 -->
       <div class="timeline-item left">
@@ -337,8 +346,22 @@
     <p>İyi ki doğdun, iyi ki varsın, iyi ki benimlesin...</p>
     <div class="signature">Seni seven</div>
   </div>
+  <script>
+    document.getElementById('start-button').addEventListener('click', () => {
+      const music = document.getElementById('background-music');
+      music.volume = 0.5; // İstersen sesi azaltabilirsin
+      music.play();
 
-  <script src="js/script.js"></script>
+      const intro = document.getElementById('intro-screen');
+      intro.style.transition = "opacity 1s";
+      intro.style.opacity = 0;
+
+      setTimeout(() => {
+        intro.style.display = "none";
+      }, 1000); // Fade out süresi
+    });
+  </script>
+
 </body>
 
 </html>
